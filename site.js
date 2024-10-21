@@ -95,14 +95,12 @@ function dropCart(e) {
   draggableCopyElement.id = `${draggableCopyElement.id}-copy`;
 
   const totalElement = document.getElementById("amount");
-  totalElement.textContent = parseFloat(parseFloat(totalElement.textContent) + parseFloat(draggable.lastChild.childNodes[2].textContent)).toFixed(2);
+  totalElement.textContent = parseFloat(
+    parseFloat(totalElement.textContent) +
+      parseFloat(draggable.lastChild.childNodes[2].textContent)
+  ).toFixed(2);
 
-
-  if (
-    !containerTargetElelement.contains(
-      document.getElementById(draggableCopyElement.id)
-    )
-  ) {
+  if (document.getElementById(draggableCopyElement.id) == null) {
     containerTargetElelement.appendChild(draggableCopyElement);
 
     draggableCopyElement.lastChild.removeChild(
@@ -156,13 +154,13 @@ function dropProduct(e) {
   console.log(draggableCopyElement.id);
 
   const totalElement = document.getElementById("amount");
-  totalElement.textContent = parseFloat(parseFloat(totalElement.textContent) - parseFloat(draggable.lastChild.childNodes[2].textContent)).toFixed(2);
+  totalElement.textContent = parseFloat(
+    parseFloat(totalElement.textContent) -
+      parseFloat(draggable.lastChild.childNodes[2].textContent)
+  ).toFixed(2);
 
-  if (
-    !containerTargetElelement.contains(
-      document.getElementById(draggableCopyElement.id)
-    )
-  ) {
+  if (document.getElementById(draggableCopyElement.id) == null) {
+
     containerTargetElelement.appendChild(draggableCopyElement);
 
     draggableCopyElement.lastChild.removeChild(
@@ -200,7 +198,6 @@ function dropProduct(e) {
       draggable.lastChild.lastChild.textContent - 1
     }`;
   }
-
 }
 
 LoadItemsList();
@@ -216,5 +213,3 @@ const productContainerElement = document.getElementById("products-container");
 productContainerElement.addEventListener("dragenter", dragEnter);
 productContainerElement.addEventListener("dragover", dragOver);
 productContainerElement.addEventListener("drop", dropProduct);
-
-
